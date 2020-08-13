@@ -978,3 +978,18 @@ JWT_AUTH.update({
         'y5ZLcTUomo4rZLjghVpq6KZxfS6I1Vz79ZsMVUWEdXOYePCKKsrQG20ogQEkmTf9FT_SouC6jPcHLXw"}]}'
     ),
 })
+
+
+##################### Sentry ############################
+
+# SENTRY Integration
+SENTRY_DSN = AUTH_TOKENS.get('SENTRY_DSN', False)
+
+if SENTRY_DSN:
+
+    # Set your DSN value
+    RAVEN_CONFIG = {
+        'dsn': SENTRY_DSN,
+    }
+
+    INSTALLED_APPS += ('raven.contrib.django.raven_compat',)
