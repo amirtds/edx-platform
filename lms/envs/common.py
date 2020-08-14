@@ -847,7 +847,7 @@ DJFS = {
 
 ENABLE_MULTICOURSE = False  # set to False to disable multicourse display (see lib.util.views.edXhome)
 
-WIKI_ENABLED = True
+WIKI_ENABLED = False
 
 ###
 
