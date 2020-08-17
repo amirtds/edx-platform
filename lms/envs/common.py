@@ -1146,7 +1146,7 @@ COURSES_WITH_UNSAFE_CODE = []
 # Change DEBUG in your environment settings files, not here
 DEBUG = False
 USE_TZ = True
-SESSION_COOKIE_SECURE = False
+SESSION_COOKIE_SECURE = True
 SESSION_SAVE_EVERY_REQUEST = False
 SESSION_SERIALIZER = 'openedx.core.lib.session_serializers.PickleSerializer'
 SESSION_COOKIE_DOMAIN = ""
@@ -1587,7 +1587,7 @@ MIDDLEWARE = [
 ]
 
 # Clickjacking protection can be disbaled by setting this to 'ALLOW'
-X_FRAME_OPTIONS = 'DENY'
+X_FRAME_OPTIONS = 'ALLOW'
 
 # Platform for Privacy Preferences header
 P3P_HEADER = 'CP="Open EdX does not have a P3P policy."'
@@ -2570,7 +2570,7 @@ INSTALLED_APPS = [
 CSRF_COOKIE_AGE = 60 * 60 * 24 * 7 * 52
 # It is highly recommended that you override this in any environment accessed by
 # end users
-CSRF_COOKIE_SECURE = False
+CSRF_COOKIE_SECURE = True
 CSRF_TRUSTED_ORIGINS = []
 CROSS_DOMAIN_CSRF_COOKIE_DOMAIN = ''
 CROSS_DOMAIN_CSRF_COOKIE_NAME = ''

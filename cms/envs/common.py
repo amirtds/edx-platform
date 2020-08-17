@@ -624,7 +624,7 @@ from lms.envs.common import (
 CSRF_COOKIE_AGE = 60 * 60 * 24 * 7 * 52
 # It is highly recommended that you override this in any environment accessed by
 # end users
-CSRF_COOKIE_SECURE = False
+CSRF_COOKIE_SECURE = True
 
 CROSS_DOMAIN_CSRF_COOKIE_DOMAIN = ''
 CROSS_DOMAIN_CSRF_COOKIE_NAME = ''
@@ -723,7 +723,7 @@ MIDDLEWARE = [
 EXTRA_MIDDLEWARE_CLASSES = []
 
 # Clickjacking protection can be disabled by setting this to 'ALLOW'
-X_FRAME_OPTIONS = 'DENY'
+X_FRAME_OPTIONS = 'ALLOW'
 
 # Platform for Privacy Preferences header
 P3P_HEADER = 'CP="Open EdX does not have a P3P policy."'
@@ -911,7 +911,7 @@ COURSES_WITH_UNSAFE_CODE = []
 ############################ DJANGO_BUILTINS ################################
 # Change DEBUG in your environment settings files, not here
 DEBUG = False
-SESSION_COOKIE_SECURE = False
+SESSION_COOKIE_SECURE = True
 SESSION_SAVE_EVERY_REQUEST = False
 SESSION_SERIALIZER = 'openedx.core.lib.session_serializers.PickleSerializer'
 SESSION_COOKIE_DOMAIN = ""
@@ -926,8 +926,6 @@ COURSE_IMPORT_EXPORT_BUCKET = ''
 ALTERNATE_WORKER_QUEUES = 'lms'
 
 STATIC_URL_BASE = '/static/'
-
-X_FRAME_OPTIONS = 'DENY'
 
 GIT_REPO_EXPORT_DIR = '/edx/var/edxapp/export_course_repos'
 
