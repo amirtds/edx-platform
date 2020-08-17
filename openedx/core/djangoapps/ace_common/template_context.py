@@ -9,7 +9,6 @@ from lms.djangoapps.branding.api import get_logo_url_for_email
 from common.djangoapps.edxmako.shortcuts import marketing_link
 from openedx.core.djangoapps.theming.helpers import get_config_value_from_site_or_settings
 
-
 def get_base_template_context(site):
     """
     Dict with entries needed for all templates that use the base template.
@@ -26,8 +25,17 @@ def get_base_template_context(site):
     else:
         site_configuration_values = {}
 
+    
+    site_logo_url = "{}/static/cubite-theme/images/logo.png".format(
+        get_config_value_from_site_or_settings(
+            'LMS_ROOT_URL',
+            site=site,
+            site_config_name='LMS_ROOT_URL',)
+        )
+    
     return {
         # Platform information
+        'site_logo_url': site_logo_url,
         'homepage_url': marketing_link('ROOT'),
         'dashboard_url': dashboard_url,
         'template_revision': getattr(settings, 'EDX_PLATFORM_REVISION', None),
