@@ -3382,17 +3382,17 @@ REGISTRATION_FIELD_ORDER = [
     "city",
     "state",
     "country",
-    "gender",
-    "year_of_birth",
-    "level_of_education",
-    "specialty",
-    "profession"
     "company",
     "title",
+    "specialty",
+    "year_of_birth",
+    "level_of_education",
+    "profession"
     "mailing_address",
     "goals",
     "honor_code",
     "terms_of_service",
+    "gender",
 ]
 
 # Optional setting to restrict registration / account creation to only emails
