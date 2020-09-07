@@ -187,7 +187,9 @@ class AccountCreationForm(forms.Form):
             "mailing_address": _("Your mailing address is required"),
             "goals": _("A description of your goals is required"),
             "city": _("A city is required"),
-            "country": _("A country is required")
+            "institution": _("Institution field is required"),
+            "unit": _("Unit field is required"),
+            "position": _("Position field is required")
         }
         for field_name, field_value in extra_fields.items():
             if field_name not in self.fields:
@@ -314,6 +316,9 @@ class RegistrationFormFactory:
         "terms_of_service",
         "profession",
         "specialty",
+        "institution",
+        "unit",
+        "position",
     ]
 
     def _is_field_visible(self, field_name):
@@ -598,7 +603,7 @@ class RegistrationFormFactory:
         """
         # Translators: This label appears above a dropdown menu on the registration
         # form used to select the user's gender.
-        gender_label = _("Gender")
+        gender_label = _(u"Sex")
 
         # The labels are marked for translation in UserProfile model definition.
         # pylint: disable=translation-of-non-string
@@ -704,8 +709,56 @@ class RegistrationFormFactory:
         # Translators: This label appears above a dropdown menu on the registration
         # form used to select the user's specialty
         specialty_label = _("Specialty")
+        self._add_field_with_configurable_select_options('profession', specialty_label, form_desc, required=required)
 
-        self._add_field_with_configurable_select_options('specialty', specialty_label, form_desc, required=required)
+    def _add_institution_field(self, form_desc, required=False):
+        """Add a intitution field to a form description.
+
+        Arguments:
+            form_desc: A form description
+
+        Keyword Arguments:
+            required (bool): Whether this field is required; defaults to False
+
+        """
+        # Translators: This label appears above a dropdown menu on the registration
+        # form used to select the user's specialty
+        institution_label = _("Institution")
+
+        self._add_field_with_configurable_select_options('institution', institution_label, form_desc, required=required)
+
+    def _add_unit_field(self, form_desc, required=False):
+        """Add a unit field to a form description.
+
+        Arguments:
+            form_desc: A form description
+
+        Keyword Arguments:
+            required (bool): Whether this field is required; defaults to False
+
+        """
+        # Translators: This label appears above a dropdown menu on the registration
+        # form used to select the user's specialty
+        unit_label = _("Unit")
+
+        self._add_field_with_configurable_select_options('unit', unit_label, form_desc, required=required)
+
+    def _add_position_field(self, form_desc, required=False):
+        """Add a position field to a form description.
+
+        Arguments:
+            form_desc: A form description
+
+        Keyword Arguments:
+            required (bool): Whether this field is required; defaults to False
+
+        """
+        # Translators: This label appears above a dropdown menu on the registration
+        # form used to select the user's specialty
+        position_label = _("Position")
+
+        self._add_field_with_configurable_select_options('position', position_label, form_desc, required=required)
+
 
     def _add_mailing_address_field(self, form_desc, required=True):
         """Add a mailing address field to a form description.

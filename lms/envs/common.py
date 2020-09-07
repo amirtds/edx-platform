@@ -3393,6 +3393,9 @@ REGISTRATION_FIELD_ORDER = [
     "honor_code",
     "terms_of_service",
     "gender",
+    "institution",
+    "unit",
+    "position",
 ]
 
 # Optional setting to restrict registration / account creation to only emails

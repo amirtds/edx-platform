@@ -521,15 +521,6 @@ class UserProfile(models.Model):
     this_year = datetime.now(UTC).year
     VALID_YEARS = list(range(this_year, this_year - 120, -1))
     year_of_birth = models.IntegerField(blank=True, null=True, db_index=True)
-    GENDER_CHOICES = (
-        ('m', ugettext_noop('Male')),
-        ('f', ugettext_noop('Female')),
-        # Translators: 'Other' refers to the student's gender
-        ('o', ugettext_noop('Other/Prefer Not to Say'))
-    )
-    gender = models.CharField(
-        blank=True, null=True, max_length=6, db_index=True, choices=GENDER_CHOICES
-    )
 
     # [03/21/2013] removed these, but leaving comment since there'll still be
     # p_se and p_oth in the existing data in db.
@@ -612,13 +603,22 @@ class UserProfile(models.Model):
         ('WI', 'Wisconsin'),
         ('WY', 'Wyoming'),
     )
-    state = models.CharField(blank=True, null=True, max_length=2, choices=STATE_CHOICES)
+    state = models.CharField(blank=True, null=True, max_length=255)
     goals = models.TextField(blank=True, null=True)
     allow_certificate = models.BooleanField(default=1)
     bio = models.CharField(blank=True, null=True, max_length=3000, db_index=False)
     profile_image_uploaded_at = models.DateTimeField(null=True, blank=True)
     phone_regex = RegexValidator(regex=r'^\+?1?\d*$', message="Phone number can only contain numbers.")
     phone_number = models.CharField(validators=[phone_regex], blank=True, null=True, max_length=50)
+    GENDER_CHOICES = (
+        (u'm', ugettext_noop(u'Male')),
+        (u'f', ugettext_noop(u'Female')),
+        # Translators: 'Other' refers to the student's gender
+        (u'o', ugettext_noop(u'Other/Prefer Not to Say'))
+    )
+    gender = models.CharField(
+        blank=True, null=True, max_length=6, db_index=True, choices=GENDER_CHOICES
+    )
 
     @property
     def has_profile_image(self):
