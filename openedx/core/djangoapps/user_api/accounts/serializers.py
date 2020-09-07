@@ -152,6 +152,9 @@ class UserReadOnlySerializer(serializers.Serializer):
             "social_links": None,
             "extended_profile_fields": None,
             "phone_number": None,
+            "institution": None,
+            "unit": None,
+            "position": None,
         }
 
         if user_profile:
@@ -181,6 +184,9 @@ class UserReadOnlySerializer(serializers.Serializer):
                     ).data,
                     "extended_profile": get_extended_profile(user_profile),
                     "phone_number": user_profile.phone_number,
+                    "institution": user.profile.get_meta().get("institution", ""),
+                    "unit": user.profile.get_meta().get("unit", ""),
+                    "position": user.profile.get_meta().get("position", ""),
                 }
             )
 
@@ -242,7 +248,7 @@ class AccountLegacyProfileSerializer(serializers.HyperlinkedModelSerializer, Rea
         fields = (
             "name", "gender", "goals", "year_of_birth", "level_of_education", "country", "state", "social_links",
             "mailing_address", "bio", "profile_image", "requires_parental_consent", "language_proficiencies",
-            "phone_number"
+            "phone_number", "institution", "unit", "position"
         )
         # Currently no read-only field, but keep this so view code doesn't need to know.
         read_only_fields = ()
