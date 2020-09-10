@@ -11131,26 +11131,11 @@ msgid "The '{field_name}' field cannot be edited."
 msgstr "El campo '{field_name}' no puede ser editado."
 
 #. Translators: This label appears above a field on the registration form
-#. which allows the user to input the First Name
-#: openedx/core/djangoapps/user_api/accounts/settings_views.py
-#: openedx/core/djangoapps/user_authn/views/registration_form.py
-msgid "First Name"
-msgstr "Primer Nombre"
-
-#. Translators: This label appears above a field on the registration form
-#. which allows the user to input the First Name
-#: openedx/core/djangoapps/user_api/accounts/settings_views.py
-#: openedx/core/djangoapps/user_authn/views/registration_form.py
-msgid "Last Name"
-msgstr "Apellido"
-
-#. Translators: This label appears above a field on the registration form
-#. which allows the user to input the State/Province/Region in which they
-#. live.
+#. which allows the user to input the State/Province/Region in which they live.
 #: openedx/core/djangoapps/user_api/accounts/settings_views.py
 #: openedx/core/djangoapps/user_authn/views/registration_form.py
 msgid "State/Province/Region"
-msgstr "Estado/Provincia/Región"
+msgstr "Departamento/Provincia"
 
 #. Translators: This label appears above a field on the registration form
 #. which allows the user to input the Company
