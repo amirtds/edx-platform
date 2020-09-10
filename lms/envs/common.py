@@ -420,7 +420,7 @@ FEATURES = {
     # .. toggle_tickets: 'https://github.com/edx/edx-platform/pull/21616'
     # .. toggle_status: supported
     # .. toggle_warnings: None
-    'ENABLE_CHANGE_USER_PASSWORD_ADMIN': False,
+    'ENABLE_CHANGE_USER_PASSWORD_ADMIN': True,
 
     # .. toggle_name: ENABLE_COURSEWARE_MICROFRONTEND
     # .. toggle_implementation: DjangoSetting
@@ -3756,8 +3756,8 @@ EDX_PLATFORM_REVISION = 'release'
 
 # Once a user has watched this percentage of a video, mark it as complete:
 # (0.0 = 0%, 1.0 = 100%)
-COMPLETION_VIDEO_COMPLETE_PERCENTAGE = 0.95
-COMPLETION_BY_VIEWING_DELAY_MS = 5000
+COMPLETION_VIDEO_COMPLETE_PERCENTAGE = 1
+COMPLETION_BY_VIEWING_DELAY_MS = 3000
 
 ############### Settings for Django Rate limit #####################
 RATELIMIT_ENABLE = True
