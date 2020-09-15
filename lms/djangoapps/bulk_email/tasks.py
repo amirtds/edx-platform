@@ -124,6 +124,7 @@ def _get_course_email_context(course):
         'logo_url': get_logo_url_for_email(),
         'platform_name': configuration_helpers.get_value('PLATFORM_NAME', settings.PLATFORM_NAME),
         'year': timezone.now().year,
+        'lms_root_url': lms_root_url,
     }
     return email_context
 
