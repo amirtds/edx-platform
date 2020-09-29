@@ -603,7 +603,7 @@ class RegistrationFormFactory:
         """
         # Translators: This label appears above a dropdown menu on the registration
         # form used to select the user's gender.
-        gender_label = _(u"Sex")
+        gender_label = _(u"Gender")
 
         # The labels are marked for translation in UserProfile model definition.
         # pylint: disable=translation-of-non-string
