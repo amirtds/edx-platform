@@ -119,3 +119,4 @@ AUTHN_LOGIN_NUDGE_HIBP_POLICY_MSG = _(
     'Our system detected that your password is vulnerable. '
     'We recommend you change it so that your account stays secure.'
 )
+REQUIRED_FIELD_DEPARTMENT_TEXT_MSG= _(u"Enter your Department.")

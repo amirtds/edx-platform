@@ -267,8 +267,12 @@ def _get_extended_profile_fields():
         "goals": _("Tell us why you're interested in {platform_name}").format(
             platform_name=configuration_helpers.get_value("PLATFORM_NAME", settings.PLATFORM_NAME)
         ),
-        "profession": _("Profession"),
-        "specialty": _("Specialty")
+        "profession": _(u"Profession"),
+        "specialty": _(u"Specialty"),
+        "department": _(u"Department"),
+        "institution": _(u"Institution"),
+        "unit": _(u"Unit"),
+        "position": _(u"Position")
     }
 
     extended_profile_field_names = configuration_helpers.get_value('extended_profile_fields', [])

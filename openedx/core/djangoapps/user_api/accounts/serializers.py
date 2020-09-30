@@ -169,6 +169,7 @@ class UserReadOnlySerializer(serializers.Serializer):  # lint-amnesty, pylint: d
             "social_links": None,
             "extended_profile_fields": None,
             "phone_number": None,
+            "department": None,
             "pending_name_change": None,
             "verified_name": None,
         }
@@ -200,6 +201,7 @@ class UserReadOnlySerializer(serializers.Serializer):  # lint-amnesty, pylint: d
                     ).data,
                     "extended_profile": get_extended_profile(user_profile),
                     "phone_number": user_profile.phone_number,
+                    "department": user.profile.get_meta().get("department", ""),
                 }
             )
 
