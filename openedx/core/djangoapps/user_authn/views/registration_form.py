@@ -187,6 +187,7 @@ class AccountCreationForm(forms.Form):
             "mailing_address": _("Your mailing address is required"),
             "goals": _("A description of your goals is required"),
             "city": _("A city is required"),
+            "department": _("Department field is required"),
             "institution": _("Institution field is required"),
             "unit": _("Unit field is required"),
             "position": _("Position field is required")
@@ -316,6 +317,7 @@ class RegistrationFormFactory:
         "terms_of_service",
         "profession",
         "specialty",
+        "department",
         "institution",
         "unit",
         "position",
@@ -710,6 +712,22 @@ class RegistrationFormFactory:
         # form used to select the user's specialty
         specialty_label = _("Specialty")
         self._add_field_with_configurable_select_options('profession', specialty_label, form_desc, required=required)
+
+    def _add_department_field(self, form_desc, required=False):
+        """Add a department field to a form description.
+
+        Arguments:
+            form_desc: A form description
+
+        Keyword Arguments:
+            required (bool): Whether this field is required; defaults to False
+
+        """
+        # Translators: This label appears above a dropdown menu on the registration
+        # form used to select the user's specialty
+        department_label = _("Department")
+
+        self._add_field_with_configurable_select_options('department', department_label, form_desc, required=required)
 
     def _add_institution_field(self, form_desc, required=False):
         """Add a intitution field to a form description.

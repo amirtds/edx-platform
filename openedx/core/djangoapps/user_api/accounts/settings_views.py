@@ -244,6 +244,7 @@ def _get_extended_profile_fields():
         ),
         "profession": _(u"Profession"),
         "specialty": _(u"Specialty"),
+        "department": _(u"Department"),
         "institution": _(u"Institution"),
         "unit": _(u"Unit"),
         "position": _(u"Position")
