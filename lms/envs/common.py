@@ -2825,6 +2825,7 @@ REGISTRATION_FIELD_ORDER = [
     "honor_code",
     "terms_of_service",
     "gender",
+    "department",
     "institution",
     "unit",
     "position",
