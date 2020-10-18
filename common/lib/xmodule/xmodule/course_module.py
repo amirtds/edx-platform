@@ -998,6 +998,34 @@ class CourseFields:  # lint-amnesty, pylint: disable=missing-class-docstring
         ),
         scope=Scope.settings, default=False
     )
+
+    certificate_title = String(
+    display_name=_("Certificate Title"),
+    help=_(
+        "For example: EL INSTITUTO SUPERIOR DE LA JUDICATURA DE PANAMÁ, DOCTOR CÉSAR AUGUSTO QUINTERO CORREA Y JUSTICE EDUCATION SOCIETY OF BRITISH COLUMBIA OF CANADA"
+    ),
+    scope=Scope.settings, default=""
+    )
+
+    certificate_duration_place = String(
+    display_name=_("Certificate course duration and when it took place"),
+    help=_(
+        "For example: Con una duración de 16 horas académicas Realizado el 20 y 21 de enero de 2020.Dado en la República de Panamá, a los veintiún (21) días del mes de enero de 2020."
+    ),
+    scope=Scope.settings, default=""
+    )
+
+    certificate_logo = List(
+        display_name=_("Certificate Logo or Logos"),
+        help=_(
+            # Translators: the quoted words 'both', 'about', and 'none' must be
+            # left untranslated.  Leave them as English words.
+            "Logos to show in the certificate. You can include jes, canada wordmark, isjup and organo judicial."
+        ),
+        default=["jes", "canada wordmark"],
+        scope=Scope.settings
+    )
+
     other_course_settings = Dict(
         display_name=_("Other Course Settings"),
         help=_(
