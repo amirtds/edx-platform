@@ -73,7 +73,7 @@ def saml_metadata_view(request):
     complete_url = reverse('social:complete', args=("tpa-saml", ))
     if settings.APPEND_SLASH and not complete_url.endswith('/'):
         complete_url = complete_url + '/'  # Required for consistency
-    saml_backend = load_backend(load_strategy(request), "tpa-saml", redirect_uri=complete_url)
+    saml_backend = load_backend(load_strategy(request), "tpa-saml", redirect_uri=settings.ENV_TOKENS.get("SAML_REDIRECT_URL", complete_url))
     metadata, errors = saml_backend.generate_metadata_xml(idp_slug)
 
     if not errors:
