@@ -5,7 +5,7 @@ Slightly customized python-social-auth backend for SAML 2.0 support
 
 import logging
 from copy import deepcopy
-
+from django.conf import settings
 import requests
 from django.contrib.sites.models import Site
 from django.http import Http404
@@ -54,7 +54,7 @@ class SAMLAuthBackend(SAMLAuth):  # pylint: disable=abstract-method
         Override of SAMLAuth.generate_saml_config to use an idp's configured saml_sp_configuration if given.
         """
         if idp:
-            abs_completion_url = self.redirect_uri
+            abs_completion_url = settings.ENV_TOKENS.get("SAML_REDIRECT_URL", self.redirect_uri)
             config = {
                 'contactPerson': {
                     'technical': self.get_idp_setting(idp, 'TECHNICAL_CONTACT'),
