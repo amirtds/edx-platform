@@ -1,7 +1,7 @@
 """
 Tests for the CreateUserAccountView.
 """
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.test import TestCase
 from rest_framework.permissions import AllowAny
 from student.tests.factories import UserFactory

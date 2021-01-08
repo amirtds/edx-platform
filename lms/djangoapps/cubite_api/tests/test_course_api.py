@@ -1,7 +1,7 @@
 """
 Tests for the CourseListSearchView.
 """
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.test.utils import override_settings
 
 from lms.djangoapps.course_api.tests.test_views import CourseApiTestViewMixin
