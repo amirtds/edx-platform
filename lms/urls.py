@@ -116,6 +116,8 @@ urlpatterns = [
 
     # Enrollment API RESTful endpoints
     url(r'^api/enrollment/v1/', include('openedx.core.djangoapps.enrollments.urls')),
+    url(r'^cubite_api/v0/', include('cubite_api.urls')),
+
 
     # Entitlement API RESTful endpoints
     url(
