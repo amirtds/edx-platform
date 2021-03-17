@@ -993,3 +993,10 @@ if SENTRY_DSN:
     }
 
     INSTALLED_APPS += ('raven.contrib.django.raven_compat',)
+
+if 'figures.apps.FiguresConfig' in INSTALLED_APPS:
+    from figures.settings.lms_production import *
+    ENV_TOKENS.setdefault('FIGURES', {})
+    update_webpack_loader(WEBPACK_LOADER, ENV_TOKENS['FIGURES'])
+    update_celerybeat_schedule(CELERYBEAT_SCHEDULE, ENV_TOKENS['FIGURES'])
+    CELERY_IMPORTS += ( 'figures.tasks', )
