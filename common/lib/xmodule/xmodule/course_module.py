@@ -1020,7 +1020,7 @@ class CourseFields:  # lint-amnesty, pylint: disable=missing-class-docstring
         help=_(
             # Translators: the quoted words 'both', 'about', and 'none' must be
             # left untranslated.  Leave them as English words.
-            "Logos to show in the certificate. You can include jes, canada wordmark, isjup and organo judicial."
+            "Logos to show in the certificate. You can include jes, canada wordmark, isjup, organo judicial, ministerio publico honduras and escuela ministerio publico"
         ),
         default=["jes", "canada wordmark"],
         scope=Scope.settings
