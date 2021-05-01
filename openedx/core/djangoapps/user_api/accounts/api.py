@@ -11,6 +11,8 @@ import six
 from django.conf import settings
 from django.core.exceptions import ObjectDoesNotExist
 from django.core.validators import ValidationError, validate_email
+from django.db import IntegrityError, transaction
+from django.http import HttpResponseForbidden
 from django.utils.translation import override as override_language
 from django.utils.translation import ugettext as _
 from pytz import UTC
@@ -338,6 +340,32 @@ def _send_email_change_requests_if_needed(data, user):
                 u"Error thrown from do_email_change_request: '{}'".format(text_type(err)),
                 user_message=text_type(err)
             )
+
+
+@helpers.intercept_errors(errors.UserAPIInternalError, ignore_errors=[errors.UserAPIRequestError])
+def activate_account(activation_key):
+    """Activate a user's account.
+
+    Args:
+        activation_key (unicode): The activation key the user received via email.
+
+    Returns:
+        None
+
+    Raises:
+        errors.UserNotAuthorized
+        errors.UserAPIInternalError: the operation failed due to an unexpected error.
+
+    """
+    if waffle().is_enabled(PREVENT_AUTH_USER_WRITES):
+        raise errors.UserAPIInternalError(SYSTEM_MAINTENANCE_MSG)
+    try:
+        registration = Registration.objects.get(activation_key=activation_key)
+    except Registration.DoesNotExist:
+        raise errors.UserNotAuthorized
+    else:
+        # This implicitly saves the registration
+        registration.activate()
 
 
 def get_name_validation_error(name):

@@ -35,7 +35,9 @@ urlpatterns = [
         name='registration_validation'
     ),
 
-    url(r'^login_ajax$', login.login_user, name="login_api"),
+    # Login
+    url(r'^login_post$', login.login_user, name='login_post'),
+    url(r'^login_ajax$', login.login_user, name="login"),
 
     # Moved from user_api/legacy_urls.py
     # `user_api` prefix is preserved for backwards compatibility.

@@ -76,6 +76,7 @@ class LogoutView(TemplateView):
 
         logout(request)
 
+        # If we are using studio logout directly and there is not OIDC logouts we can just redirect the user
         response = super(LogoutView, self).dispatch(request, *args, **kwargs)
 
         # Clear the cookie used by the edx.org marketing site
