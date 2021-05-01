@@ -965,9 +965,9 @@ class ProblemResponses:
         # then the columns returned by the xblock report generator in sorted order and
         # finally end with the more machine friendly block_key and state.
         student_data_keys_list = (
-            ['username', 'title', 'location'] +
-            list(student_data_keys.keys()) +
-            ['block_key', 'state']
+            ['username', 'title', "Question", "Answer", "Correct Answer"]
+            # sorted(student_data_keys)
+            # ['block_key', 'state']
         )
 
         return student_data, student_data_keys_list
