@@ -575,10 +575,10 @@ LMS_INTERNAL_ROOT_URL = LMS_ROOT_URL
 
 LOGIN_REDIRECT_URL = EDX_ROOT_URL + '/home/'
 # TODO: Determine if LOGIN_URL could be set to the FRONTEND_LOGIN_URL value instead.
-LOGIN_URL = reverse_lazy('login_redirect_to_lms')
-FRONTEND_LOGIN_URL = lambda settings: settings.LMS_ROOT_URL + '/login'
+LOGIN_URL = reverse_lazy('login')
+FRONTEND_LOGIN_URL = lambda settings: '/login/'
 derived('FRONTEND_LOGIN_URL')
-FRONTEND_LOGOUT_URL = lambda settings: settings.LMS_ROOT_URL + '/logout'
+FRONTEND_LOGOUT_URL = lambda settings: '/logout/'
 derived('FRONTEND_LOGOUT_URL')
 FRONTEND_REGISTER_URL = lambda settings: settings.LMS_ROOT_URL + '/register'
 derived('FRONTEND_REGISTER_URL')
