@@ -447,7 +447,7 @@ class UserProfile(models.Model):
     # This is not visible to other users, but could introduce holes later
     user = models.OneToOneField(User, unique=True, db_index=True, related_name='profile', on_delete=models.CASCADE)
     name = models.CharField(blank=True, max_length=255, db_index=True)
-
+    group = models.CharField(blank=True, max_length=255, db_index=True)
     meta = models.TextField(blank=True)  # JSON dictionary for future expansion
     courseware = models.CharField(blank=True, max_length=255, default=u'course.xml')
 
@@ -1152,7 +1152,7 @@ class CourseEnrollment(models.Model):
         return get_cosmetic_verified_display_price(self.course)
 
     created = models.DateTimeField(auto_now_add=True, null=True, db_index=True)
-
+    expiration_date = models.DateTimeField(auto_now_add=True, null=True, db_index=True)
     # If is_active is False, then the student is not considered to be enrolled
     # in the course (is_enrolled() will return False)
     is_active = models.BooleanField(default=True)
