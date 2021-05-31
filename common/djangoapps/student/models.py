@@ -1152,7 +1152,7 @@ class CourseEnrollment(models.Model):
         return get_cosmetic_verified_display_price(self.course)
 
     created = models.DateTimeField(auto_now_add=True, null=True, db_index=True)
-    expiration_date = models.DateTimeField(auto_now_add=True, null=True, db_index=True)
+    expiration_date = models.DateTimeField(null=True, db_index=True)
     # If is_active is False, then the student is not considered to be enrolled
     # in the course (is_enrolled() will return False)
     is_active = models.BooleanField(default=True)
