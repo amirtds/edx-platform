@@ -905,9 +905,9 @@ class ProblemResponses(object):
                     # A machine-friendly location for the current block
                     response['block_key'] = str(block_key)
                     # freetextresponse keys
-                    question = title
+                    freetextresponse_question = title
                     state_dict = json.loads(response["state"])
-                    answer = state_dict.get("student_answer", "Not Answered")
+                    freetextresponse_answer = state_dict.get("student_answer", "Not Answered")
                     # A block that has a single state per user can contain multiple responses
                     # within the same state.
                     user_states = generated_report_data.get(response['username'], [])
@@ -932,18 +932,11 @@ class ProblemResponses(object):
         # Keep the keys in a useful order, starting with username, title and location,
         # then the columns returned by the xblock report generator in sorted order and
         # finally end with the more machine friendly block_key and state.
-        if "freetextresponse" in block_key:
-            student_data_keys_list = (
-            ['username', 'question', "answer"]
+        student_data_keys_list = (
+            ['username', 'title', "Question", "Answer", "Correct Answer", "freetextresponse_question", "freetextresponse_answer"]
             # sorted(student_data_keys)
             # ['block_key', 'state']
         )
-        else:
-            student_data_keys_list = (
-                ['username', 'title', "Question", "Answer", "Correct Answer"]
-                # sorted(student_data_keys)
-                # ['block_key', 'state']
-            )
 
         return student_data, student_data_keys_list
 
