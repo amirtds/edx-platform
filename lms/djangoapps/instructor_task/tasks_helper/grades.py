@@ -932,7 +932,7 @@ class ProblemResponses(object):
         # Keep the keys in a useful order, starting with username, title and location,
         # then the columns returned by the xblock report generator in sorted order and
         # finally end with the more machine friendly block_key and state.
-        if "freetextresponse" in 'block_key':
+        if "freetextresponse" in block_key:
             student_data_keys_list = (
             ['username', 'question', "answer"]
             # sorted(student_data_keys)
