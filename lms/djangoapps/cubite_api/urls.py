@@ -13,9 +13,6 @@ urlpatterns = [
     url(r'^accounts/deactivate_user', views.DeactivateUserAccount.as_view(), name="user_account_deactivate_user"),
     url(r'^accounts/activate_user', views.ActivateUserAccount.as_view(), name="user_account_activate_user"),
 
-    # Just like CourseListView API, but with search
-    url(r'^search_courses', views.CourseListSearchView.as_view(), name="course_list_search"),
-
     # bulk enrollment API
     url(r'^bulk-enrollment/bulk-enroll', views.BulkEnrollView.as_view(), name="bulk_enrollment_api"),
 
