@@ -37,30 +37,30 @@ from openedx.core.lib.api.permissions import (
 
 from openedx.core.djangoapps.user_authn.views.registration_form import get_registration_extension_form
 from openedx.core.djangoapps.user_authn.views.register import create_account_with_params
-from student.models import CourseEnrollment, EnrollmentClosedError, \
+from common.djangoapps.student.models import CourseEnrollment, EnrollmentClosedError, \
     CourseFullError, AlreadyEnrolledError, UserProfile
 
-from course_modes.models import CourseMode
-from courseware.courses import get_course_by_id
+from common.djangoapps.course_modes.models import CourseMode
+from lms.djangoapps.courseware.courses import get_course_by_id
 from openedx.core.djangoapps.enrollments.views import EnrollmentCrossDomainSessionAuth, \
     EnrollmentUserThrottle, ApiKeyPermissionMixIn
 
 from lms.djangoapps.instructor.views.api import save_registration_code, \
     students_update_enrollment
 
-from shoppingcart.exceptions import RedemptionCodeError
-from shoppingcart.models import (
+from lms.djangoapps.shoppingcart.exceptions import RedemptionCodeError
+from lms.djangoapps.shoppingcart.models import (
     RegistrationCodeRedemption, CourseRegistrationCode
 )
-from shoppingcart.views import get_reg_code_validity
+from lms.djangoapps.shoppingcart.views import get_reg_code_validity
 
 from opaque_keys.edx.keys import CourseKey
 from lms.djangoapps.certificates.models import GeneratedCertificate
 
 from openedx.core.lib.api.view_utils import view_auth_classes, DeveloperErrorViewMixin
-from .forms import CourseListGetAndSearchForm
-from .serializers import BulkEnrollmentSerializer
-from .utils import auto_generate_username, send_activation_email
+from lms.djangoapps.cubite_api.forms import CourseListGetAndSearchForm
+from lms.djangoapps.cubite_api.serializers import BulkEnrollmentSerializer
+from lms.djangoapps.cubite_api.utils import auto_generate_username, send_activation_email
 
 log = logging.getLogger(__name__)
 
