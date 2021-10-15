@@ -19,14 +19,4 @@ urlpatterns = [
     # bulk enrollment API
     url(r'^bulk-enrollment/bulk-enroll', views.BulkEnrollView.as_view(), name="bulk_enrollment_api"),
 
-    # enrollment codes API
-    url(r'^enrollment-codes/generate', views.GenerateRegistrationCodesView.as_view(), name="generate_registration_codes_api"),
-    url(r'^enrollment-codes/enroll-user', views.EnrollUserWithEnrollmentCodeView.as_view(), name="enroll_use_with_code_api"),
-    url(r'^enrollment-codes/status', views.EnrollmentCodeStatusView.as_view(), name="enrollment_code_status_api"),
-
-    # enrollment analytics API
-    url(r'^analytics/accounts/batch', views.GetBatchUserDataView.as_view(), name="get_batch_user_data"),
-    url(r'^analytics/accounts/user-id', views.GetUserIDView.as_view(), name="get_user_id"),
-    url(r'^analytics/enrollment/batch', views.GetBatchEnrollmentDataView.as_view(), name="get_batch_enrollment_data"),
-    url(r'^analytics/course_completion/batch', views.GetBatchCompletionDataView.as_view(), name="get_batch_completion_data"),
 ]
