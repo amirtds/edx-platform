@@ -1,6 +1,6 @@
 from django.conf.urls import url
 
-from cubite_api import views
+from lms.djangoapps.cubite_api import views
 
 
 urlpatterns = [ 
