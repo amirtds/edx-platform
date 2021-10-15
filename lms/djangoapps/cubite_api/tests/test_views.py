@@ -211,8 +211,8 @@ class GetBatchCompletionDataViewTest(CourseApiTestViewMixin, ModuleStoreTestCase
         self.assertEqual(res.status_code, 200)
 
         data = res.data
-        print query_string
-        print data
+        print(query_string)
+        print(data)
         self.assertEqual(len(data), num_certificates)
 
     def test_certificate_without_course(self):
