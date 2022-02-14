@@ -1035,7 +1035,7 @@ class CourseFields(object):
         help=_(
             # Translators: the quoted words 'both', 'about', and 'none' must be
             # left untranslated.  Leave them as English words.
-            "Logos to show in the certificate. You can include jes, canada wordmark, visual identity for international assistance, isjup, organo judicial, ministerio publico honduras and escuela ministerio publico"
+            "Logos to show in the certificate. You can include jes, canada wordmark, visual identity for international assistance, isjup, organo judicial, dij, ministerio publico honduras and escuela ministerio publico"
         ),
         default=["jes", "canada wordmark"],
         scope=Scope.settings
