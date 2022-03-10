@@ -811,7 +811,7 @@ class VideoTranscriptsMixin(object):
                 transcript_name = self.youtube_id_1_0
             else:
                 log.debug("No subtitles for 'en' language")
-                raise ValueError
+                #raise ValueError
 
             data = Transcript.asset(self.location, transcript_name, lang).data.decode('utf-8')
             filename = u'{}.{}'.format(transcript_name, transcript_format)
