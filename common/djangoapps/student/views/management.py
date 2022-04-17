@@ -757,6 +757,15 @@ def create_account_with_params(request, params):
     # Track the user's registration
     if hasattr(settings, 'LMS_SEGMENT_KEY') and settings.LMS_SEGMENT_KEY:
         tracking_context = tracker.get_tracker().resolve_context()
+        try:
+            extrainfo_dict = user.extrainfo.__dict__
+            del extrainfo_dict['user_id']
+            del extrainfo_dict['_user_cache']
+            del extrainfo_dict['_state']
+            del extrainfo_dict['id']
+            extrainfo = json.dumps(extrainfo_dict)
+        except Exception:
+            extrainfo = ''
         identity_args = [
             user.id,
             {
@@ -770,6 +779,7 @@ def create_account_with_params(request, params):
                 'address': profile.mailing_address,
                 'gender': profile.gender_display,
                 'country': text_type(profile.country),
+                'extrainfo': extrainfo,
             }
         ]
 
