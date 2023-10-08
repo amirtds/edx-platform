@@ -198,7 +198,11 @@ class AccountCreationForm(forms.Form):
             "goals": _("A description of your goals is required"),
             "city": _("A city is required"),
             "department": _("Department field is required"),
-            "country": _("A country is required")
+            "country": _("A country is required"),
+            "department": _("Department field is required"),
+            "institution": _("Institution field is required"),
+            "unit": _("Unit field is required"),
+            "position": _("Position field is required")
         }
         for field_name, field_value in extra_fields.items():
             if field_name not in self.fields:
