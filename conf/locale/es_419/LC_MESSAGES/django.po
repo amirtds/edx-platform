@@ -8587,7 +8587,7 @@ msgstr "Apellido"
 #: openedx/core/djangoapps/user_authn/api/form_fields.py
 #: openedx/core/djangoapps/user_authn/views/registration_form.py
 msgid "State/Province/Region"
-msgstr "Estado/Provincia/Región"
+msgstr "Departamento/Provincia"
 
 #. Translators: This label appears above a field which allows the
 #. user to input the Company
