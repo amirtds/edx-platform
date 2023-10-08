@@ -147,7 +147,12 @@ class CourseOverview(TimeStampedModel):
     external_id = models.CharField(max_length=128, null=True, blank=True)
 
     language = models.TextField(null=True)
-
+    
+    # Customization
+    course_country = models.TextField(null=True)
+    course_topics = models.TextField(null=True)
+    course_access = models.TextField(null=True)
+        
     history = HistoricalRecords()
 
     @classmethod
@@ -263,6 +268,11 @@ class CourseOverview(TimeStampedModel):
         course_overview.entrance_exam_id = course.entrance_exam_id or ''
         # Despite it being a float, the course object defaults to an int. So we will detect that case and update
         # it to be a float like everything else.
+        # customization
+        course_overview.course_topics = course.course_topics
+        course_overview.course_country = course.course_country
+        course_overview.course_access = course.course_access
+                
         if isinstance(course.entrance_exam_minimum_score_pct, int):
             course_overview.entrance_exam_minimum_score_pct = course.entrance_exam_minimum_score_pct / 100
         else:

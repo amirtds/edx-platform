@@ -257,6 +257,10 @@ def _update_course_context(request, context, course, platform_name):
     context['certificate_title'] = course.certificate_title
     context['certificate_duration_place'] = course.certificate_duration_place
     context['certificate_name'] = course.cert_name_short
+    context['course_topics'] = course.course_topics
+    context['course_country'] = course.course_country
+    context['course_access'] = course.course_access
+    context['course_language'] = course.course_language
     context['idv_enabled_for_certificates'] = settings.FEATURES.get('ENABLE_CERTIFICATES_IDV_REQUIREMENT')
     if context['organization_long_name']:
         # Translators:  This text represents the description of course

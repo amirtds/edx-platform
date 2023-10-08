@@ -1025,6 +1025,39 @@ class CourseFields:  # lint-amnesty, pylint: disable=missing-class-docstring
         default=["jes", "canada wordmark"],
         scope=Scope.settings
     )
+    
+    course_topics = List(
+        display_name=_("Course Topics"),
+        help=_(
+            # Translators: the quoted words 'both', 'about', and 'none' must be
+            # left untranslated.  Leave them as English words.
+            "Topics to use for searching. You can use for example 'Human Rights'"
+        ),
+        default=[""],
+        scope=Scope.settings
+    )
+    
+    course_country = String(
+        display_name=_("Course Country"),
+        help=_(
+            # Translators: the quoted words 'both', 'about', and 'none' must be
+            # left untranslated.  Leave them as English words.
+            "Country to show in course card"
+        ),
+        default="",
+        scope=Scope.settings
+    )
+    
+    course_access = String(
+        display_name=_("Course Access"),
+        help=_(
+            # Translators: the quoted words 'both', 'about', and 'none' must be
+            # left untranslated.  Leave them as English words.
+            "Course access, like Limited, Public etc"
+        ),
+        default="",
+        scope=Scope.settings
+    )
 
     other_course_settings = Dict(
         display_name=_("Other Course Settings"),
