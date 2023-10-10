@@ -1068,14 +1068,14 @@ class CourseFields:  # lint-amnesty, pylint: disable=missing-class-docstring
         scope=Scope.settings
     )
     
-    course_topics = List(
+    course_topics = String(
         display_name=_("Course Topics"),
         help=_(
             # Translators: the quoted words 'both', 'about', and 'none' must be
             # left untranslated.  Leave them as English words.
             "Topics to use for searching. You can use for example 'Human Rights'"
         ),
-        default=[""],
+        default="",
         scope=Scope.settings
     )
     
