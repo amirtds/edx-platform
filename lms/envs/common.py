@@ -3596,7 +3596,6 @@ REGISTRATION_FIELD_ORDER = [
     "goals",
     "honor_code",
     "terms_of_service",
-    "gender",
     "department",
     "institution",
     "unit",
