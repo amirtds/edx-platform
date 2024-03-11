@@ -272,24 +272,18 @@ def user_groups(user):
 @cache_if_anonymous()
 def courses(request):
     """
-    Render "find courses" page. The course selection work is done in courseware.courses.
+    Render "find courses" page.  The course selection work is done in courseware.courses.
     """
-    topic = request.GET.get('topic', None)  # Extract the topic from the request
-    logging.warning("Received request: %s", request.GET)
     courses_list = []
     course_discovery_meanings = getattr(settings, 'COURSE_DISCOVERY_MEANINGS', {})
-    courses_list = get_courses(request.user)
+    if not settings.FEATURES.get('ENABLE_COURSE_DISCOVERY'):
+        courses_list = get_courses(request.user)
 
-    # Filter courses by topic if one is provided, regardless of ENABLE_COURSE_DISCOVERY
-    if topic:
-        logging.warning("Received topic: %s", topic)
-        courses_list = [course for course in courses_list if course.course_topics == topic]  # Adjust this line as necessary
-
-    # Proceed with your existing sorting or filtering logic
-    if configuration_helpers.get_value("ENABLE_COURSE_SORTING_BY_START_DATE", settings.FEATURES["ENABLE_COURSE_SORTING_BY_START_DATE"]):
-        courses_list = sort_by_start_date(courses_list)
-    else:
-        courses_list = sort_by_announcement(courses_list)
+        if configuration_helpers.get_value("ENABLE_COURSE_SORTING_BY_START_DATE",
+                                           settings.FEATURES["ENABLE_COURSE_SORTING_BY_START_DATE"]):
+            courses_list = sort_by_start_date(courses_list)
+        else:
+            courses_list = sort_by_announcement(courses_list)
 
     # Add marketable programs to the context.
     programs_list = get_programs_with_type(request.site, include_hidden=False)
