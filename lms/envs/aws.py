@@ -1098,7 +1098,7 @@ RETIREMENT_STATES = ENV_TOKENS.get('RETIREMENT_STATES', RETIREMENT_STATES)
 CLOUDWALL_SERVER_PATH = ENV_TOKENS.get('CLOUDWALL_SERVER_PATH', 'my')
 GYMCMS_URL = ENV_TOKENS.get('GYMCMS_URL', 'https://thegymcms.com/')
 ENVIRONMENT = ENV_TOKENS.get('ENVIRONMENT', 'production')
-
+ACCREDIBLE_API_KEY = AUTH_TOKENS.get('ACCREDIBLE_API_KEY', '')
 
 ############################### Plugin Settings ###############################
 
