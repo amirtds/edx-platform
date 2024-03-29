@@ -1094,6 +1094,12 @@ RETIREMENT_SERVICE_WORKER_USERNAME = ENV_TOKENS.get(
 )
 RETIREMENT_STATES = ENV_TOKENS.get('RETIREMENT_STATES', RETIREMENT_STATES)
 
+############################### Custom Settings ###############################
+CLOUDWALL_SERVER_PATH = ENV_TOKENS.get('CLOUDWALL_SERVER_PATH', 'my')
+GYMCMS_URL = ENV_TOKENS.get('GYMCMS_URL', 'https://thegymcms.com/')
+ENVIRONMENT = ENV_TOKENS.get('ENVIRONMENT', 'production')
+
+
 ############################### Plugin Settings ###############################
 
 from openedx.core.djangoapps.plugins import plugin_settings, constants as plugin_constants
