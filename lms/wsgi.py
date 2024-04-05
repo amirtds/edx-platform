@@ -24,8 +24,14 @@ from xmodule.modulestore.django import modulestore  # lint-amnesty, pylint: disa
 # while to complete and we want this done before HTTP requests are accepted.
 modulestore()
 
+# import appsignal
+from __appsignal__ import appsignal
+
+# Start Appsignal
+appsignal.start()
 
 # This application object is used by the development server
 # as well as any WSGI server configured to use this file.
 from django.core.wsgi import get_wsgi_application  # lint-amnesty, pylint: disable=wrong-import-order, wrong-import-position
 application = get_wsgi_application()
+

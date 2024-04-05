@@ -1249,3 +1249,7 @@ zipp==3.17.0
 
 # The following packages are considered to be unsafe in a requirements file:
 # setuptools
+
+# AppSignal
+appsignal==1.2.0
+opentelemetry-instrumentation-django==0.45b0
