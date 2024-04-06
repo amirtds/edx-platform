@@ -24,6 +24,7 @@ import logging
 from functools import partial
 
 from celery import shared_task
+from celery.signals import worker_process_init
 from django.utils.translation import gettext_noop
 from edx_django_utils.monitoring import set_code_owner_attribute
 
@@ -53,6 +54,12 @@ from lms.djangoapps.instructor_task.tasks_helper.runner import run_main_task
 
 TASK_LOG = logging.getLogger('edx.celery.task')
 
+# Import this file
+import appsignal
+
+@worker_process_init.connect(weak=False)
+def init_celery_tracing(*args, **kwargs):
+    appsignal.start()
 
 @shared_task(base=BaseInstructorTask)
 @set_code_owner_attribute
