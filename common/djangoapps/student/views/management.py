@@ -81,6 +81,7 @@ from common.djangoapps.util.db import outer_atomic
 from common.djangoapps.util.json_request import JsonResponse
 from common.djangoapps.student.signals import USER_EMAIL_CHANGED
 from xmodule.modulestore.django import modulestore  # lint-amnesty, pylint: disable=wrong-import-order
+from appsignal import increment_counter
 
 log = logging.getLogger("edx.student")
 
@@ -388,6 +389,7 @@ def change_enrollment(request, check_access=True):
                 enroll_mode = CourseMode.auto_enroll_mode(course_id, available_modes)
                 if enroll_mode:
                     CourseEnrollment.enroll(user, course_id, check_access=check_access, mode=enroll_mode)
+                    increment_counter("enrollment_count", 1)
             except Exception:  # pylint: disable=broad-except
                 return HttpResponseBadRequest(_("Could not enroll"))
 
