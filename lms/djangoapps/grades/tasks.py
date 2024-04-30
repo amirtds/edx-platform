@@ -4,6 +4,7 @@ This module contains tasks for asynchronous execution of grade updates.
 from logging import getLogger
 
 from celery import shared_task
+from celery.signals import worker_process_init
 from celery_utils.persist_on_failure import LoggedPersistOnFailureTask
 from django.conf import settings
 from django.contrib.auth.models import User  # lint-amnesty, pylint: disable=imported-auth-user
@@ -37,6 +38,9 @@ from .signals.signals import SUBSECTION_SCORE_CHANGED
 from .subsection_grade_factory import SubsectionGradeFactory
 from .transformer import GradesTransformer
 
+
+import appsignal
+
 log = getLogger(__name__)
 
 COURSE_GRADE_TIMEOUT_SECONDS = 1200
@@ -48,6 +52,10 @@ KNOWN_RETRY_ERRORS = (  # Errors we expect occasionally, should be resolved on r
 RECALCULATE_GRADE_DELAY_SECONDS = 2  # to prevent excessive _has_db_updated failures. See TNL-6424.
 RETRY_DELAY_SECONDS = 40
 SUBSECTION_GRADE_TIMEOUT_SECONDS = 300
+
+@worker_process_init.connect(weak=False)
+def init_celery_tracing(*args, **kwargs):
+    appsignal.start()
 
 
 @shared_task(base=LoggedPersistOnFailureTask)

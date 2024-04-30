@@ -57,7 +57,8 @@ from openedx.core.djangoapps.util.user_messages import PageLevelMessages
 from openedx.core.djangolib.markup import HTML, Text
 from openedx.core.lib.api.view_utils import require_post_params  # lint-amnesty, pylint: disable=unused-import
 from openedx.features.enterprise_support.api import activate_learner_enterprise, get_enterprise_learner_data_from_api
-from appsignal import increment_counter
+
+import appsignal
 
 log = logging.getLogger("edx.student")
 AUDIT_LOG = logging.getLogger("audit")
@@ -645,7 +646,7 @@ def login_user(request, api_version='v1'):  # pylint: disable=too-many-statement
         set_custom_attribute('login_user_response_status', response.status_code)
         set_custom_attribute('login_user_redirect_url', redirect_url)
         # increment number of logged in users
-        increment_counter("login_count", 1)
+        appsignal.increment_counter("login_count", 1)
         mark_user_change_as_expected(user.id)
         return response
     except AuthFailedError as error:
