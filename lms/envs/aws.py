@@ -1100,6 +1100,16 @@ GYMCMS_URL = ENV_TOKENS.get('GYMCMS_URL', 'https://thegymcms.com/')
 ENVIRONMENT = ENV_TOKENS.get('ENVIRONMENT', 'production')
 ACCREDIBLE_API_KEY = AUTH_TOKENS.get('ACCREDIBLE_API_KEY', '')
 
+############################### Sentry Settings ###############################
+SENTRY_DSN = AUTH_TOKENS.get('SENTRY_DSN', False)
+
+if SENTRY_DSN:
+    # Set your DSN value
+    RAVEN_CONFIG = {
+        'dsn': SENTRY_DSN,
+    }
+    INSTALLED_APPS += ('raven.contrib.django.raven_compat',)
+
 ############################### Plugin Settings ###############################
 
 from openedx.core.djangoapps.plugins import plugin_settings, constants as plugin_constants
